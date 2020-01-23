@@ -1,0 +1,140 @@
+class Node(object):
+    class NameTypeError(TypeError): pass
+    class ParentTypeError(TypeError): pass
+    class ChildrenTypeError(TypeError): pass
+    class ChildTypeError(TypeError): pass
+    def __init__(self, line, name=None, parent=None, children=None, attr=None):
+    def __set_name(self, name, line=None):
+    def __set_parent(self, parent):
+    def __set_children(self, children):
+    def Name(self): return self.__name
+    def Parent(self): return self.__parent
+    def Children(self): return self.__children
+    def Name(self, value): self.__set_name(value)
+    def Parent(self, value): self.__set_parent(value)
+    def Children(self, value): self.__set_children(value)
+    def Path(self): return Path.get_path(self)
+    def Attr(self): return self.__attr
+#    def Attr(self, value): self.__attr = value
+    def Index(self): return Path.index(self)
+    def to_first(self, path=None): self.to_index(0, path)
+    def to_last(self, path=None):
+    def to_prev(self, path=None):
+    def to_next(self, path=None):
+    def to_index(self, index, path=None):
+    def to_children_first(self, path=None):
+    def to_children_last(self, path=None):
+    def to_children_index(self, index, path=None):
+    def to_ancestor_first(self, indent=1):
+    def to_ancestor_last(self, indent=1):
+    def to_ancestor_prev(self, indent=1):
+    def to_ancestor_next(self, indent=1):
+    def to_ancestor_index(self, index, indent=1):
+    def insert_first(self, node, path='./'):
+    def insert_last(self, node, path='./'):
+    def insert_prev(self, node, path='./'):
+    def insert_next(self, node, path='./'):
+    def insert_index(self, node, path, index):
+    def insert_children_first(self, node, path='./'):
+    def insert_children_last(self, node, path='./'):
+    def insert_children_index(self, node, path, index):
+    def select(self, path): return Path.select(self, path)
+    def delete(self, path=None):
+        def delete_descendants(node):
+class NodeList(list):
+    def __init__(self, arg=None):
+    def append(self, value):
+    def extend(self, values):
+    def insert(self, index, value):
+    def __is_node(self, value):
+class Path(object):
+    class ReadOnlyClass(type):
+        def DELIMITER(cls): return cls._DELIMITER
+    __metaclass__ = ReadOnlyClass
+    _DELIMITER = '/'
+    def select(base_node, path):
+    def index(base_node, path=None):
+    def get_ancestor(base_node, indent):
+    def get_path(node):
+class TexTree(object):
+    class ReadOnlyClass(type):
+        def INDENT(cls): return cls._INDENT
+        def ROOT_NAME(cls): return cls._ROOT_NAME
+    __metaclass__ = ReadOnlyClass
+    _INDENT = '\t'
+    _ROOT_NAME = '<ROOT>'
+    class TreeTextTypeError(Exception):
+    class TreeTextEmptyError(Exception):
+    class FirstNodeIndentError(Exception):
+    def __init__(self, indent='\t', root_name='<ROOT>', node_deserializer=None, node_serializer=None, root_deserializer=None, root_serializer=None):
+    def __set_node_deserializer(self, node_deserializer): self.__set_lizer("__node_deserializer", node_deserializer, NodeDeserializer)
+    def __set_node_serializer(self, node_serializer):     self.__set_lizer("__node_serializer",   node_serializer,   NodeSerializer)
+    def __set_root_deserializer(self, root_deserializer): self.__set_lizer("__root_deserializer", root_deserializer, RootDeserializer)
+    def __set_root_serializer(self, root_serializer):     self.__set_lizer("__root_serializer",   root_serializer,   RootSerializer)
+    def __set_lizer(self, name, value, typ):
+        name = '_' + self.__class__.__name__  + name
+        indent_name = '_' + target.__class__.__name__  + '__indent'
+    def to_text_lines(self, base=None):
+        def get_line(node, lines, parents):
+    def to_text(self, base=None):
+    def to_node(self, tree_text):
+        def is_tree_text_invalid_type():
+        def is_tree_text_not_empty():
+        def is_zero_indent_first_line():
+    def __to_node(self, lines):
+        def get_latest_node(parents):
+        def get_root(ana):
+        def add_node(ana, parents):
+    def Indent(self): return self.__indent
+    def RootName(self): return self.__root_name 
+    def Root(self): return self.__root
+    def Nodes(self):
+        def nodes(node, _list):
+class LineAnalizer(object):
+    class RelativeIndentError(Exception):
+    def __init__(self, lines, INDENT=TexTree.INDENT, ROOT_NAME=TexTree.ROOT_NAME):
+    def RootName(self): return self.__root_name
+    def RootAttr(self): return self.__root_attr
+    def analize_nodes(self):
+    def __calc_indents(self, i):
+    def IsLast(self): return len(self.__lines) <= self.__index+1 
+    def IsFirst(self): return 0 == self.Index
+    def IsLeaf(self): return not self.IsParent
+    def IsParent(self): return self.__indent+1 == self.__next_indent
+    def Line(self): return self.__lines[self.__index]
+    def Indent(self): return self.__indent
+    def Index(self): return self.__index
+    def IndentStr(self):
+    def Name(self): return self.__name
+    def Attr(self): return self.__attr
+    def IndentationDiff(self):
+    def __get_indent_num(self, line_index=-1):
+    def __get_triple(self):
+    def __is_indent_error(self):
+    def __raise_indent_error(self):
+class RootNode(Node):# pass
+    def __init__(self, line=None, name=None, parent=None, children=None, attr=None):
+class RootDeserializer(object):
+    def __init__(self, attr_des=None):
+    def deserialize(self, line_analizer):
+class RootSerializer(object):
+    def __init__(self, attr_ser=None, indent=TexTree.INDENT):
+    def Indent(self): return self.__indent
+    def AttrSerializer(self): return self.__attr_ser
+    def serialize(self, node):
+class NodeDeserializer(object):
+    def __init__(self, attr_des=None):
+    def deserialize(self, line_analizer, parent, parents=None):
+class NodeSerializer(object):
+    def __init__(self, attr_ser=None, indent=TexTree.INDENT):
+    def Indent(self): return self.__indent
+    def AttrSerializer(self): return self.__attr_ser
+    def serialize(self, node, parents=None):
+class RootAttributeDeserializer(object):
+    def deserialize(self, line_attr): return line_attr
+class RootAttributeSerializer(object):
+    def serialize(self, attr): return attr
+class NodeAttributeDeserializer(object):
+    def deserialize(self, line_attr): return line_attr
+class NodeAttributeSerializer(object):
+    def serialize(self, attr): return attr

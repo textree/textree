@@ -1,0 +1,6 @@
+HERE="$(cd "$(dirname "${BASH_SOURCE:-0}")"; pwd)"
+REPO_ROOT_DIR="$(cd "$(dirname "$HERE")"; pwd)"
+REPO_ROOT_DIR="$(cd "$(dirname "$REPO_ROOT_DIR")"; pwd)"
+grep -e class -e def -e '^[ A-Z_]*[ ]*[=].*$' "$REPO_ROOT_DIR/textree/py2/textree.py" > "$HERE/apis_py2.txt"
+grep -e class -e def -e '^[ A-Z_]*[ ]*[=].*$' "$REPO_ROOT_DIR/textree/py3/textree.py" > "$HERE/apis_py3.txt"
+diff "$HERE/apis_py2.txt" "$HERE/apis_py3.txt"
