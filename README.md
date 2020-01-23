@@ -1,4 +1,4 @@
-[ja](https://github.com/textree/textree/ReadMe.ja.md)
+[ja](./ReadMe.ja.md)
 
 # TexTree
 
@@ -107,7 +107,7 @@ node = Node.Path.select(root, 'A/A1/A11')
 node.Name = 'UpdateName'
 ```
 
-There are many others. Refer to the [code](https://github.com/textree/textree/src/py3/textree.py) or [API list](https://github.com/textree/textree/doc/memo/apis_py3.txt) for details.
+There are many others. Refer to the [code](./textree/py3/textree.py) or [API list](./doc/memo/apis_py3.txt) for details.
 
 ## Attribute of Node
 
@@ -300,5 +300,5 @@ self.assertEqual(tree_text, tree.to_text())
 
 This software is [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html) licensed. (GNU Affero General Public License v3) `agpl-3.0`
 
-[![agpl-3.0](https://github.com/textree/textree/doc/res/AGPLv3.svg "agpl-3.0")](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![agpl-3.0](./doc/res/AGPLv3.svg "agpl-3.0")](https://www.gnu.org/licenses/agpl-3.0.en.html)
 

@@ -1,4 +1,4 @@
-[en](https://github.com/textree/textree/ReadMe.md)
+[en](./README.ja.md)
 
 # TexTree
 
@@ -107,7 +107,7 @@ node = Node.Path.select(root, 'A/A1/A11')
 node.Name = 'UpdateName'
 ```
 
-　他にも多数ある。詳細は[コード](https://github.com/textree/textree/src/py3/textree.py)または[API一覧](https://github.com/textree/textree/doc/memo/apis_py3.txt)を参照すること。
+　他にも多数ある。詳細は[コード](./textree/py3/textree.py)または[API一覧](./doc/memo/apis_py3.txt)を参照すること。
 
 ## 属性
 
@@ -300,5 +300,5 @@ self.assertEqual(tree_text, tree.to_text())
 
 　このソフトウェアは[AGPLv3](https://www.gnu.org/licenses/agpl-3.0.ja.html)である。（GNU Affero General Public License v3）`agpl-3.0`
 
-[![agpl-3.0](https://github.com/textree/textree/doc/res/AGPLv3.svg "agpl-3.0")](https://www.gnu.org/licenses/agpl-3.0.ja.html)
+[![agpl-3.0](./doc/res/AGPLv3.svg "agpl-3.0")](https://www.gnu.org/licenses/agpl-3.0.ja.html)
 
