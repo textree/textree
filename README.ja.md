@@ -1,4 +1,4 @@
-[en](./README.ja.md)
+[en](./README.md)
 
 # TexTree
 
