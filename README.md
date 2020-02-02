@@ -4,6 +4,8 @@
 
 Create nodes as specified in the tree text.
 
+![demo](doc/demo/demo.svg)
+
 # Features
 
 * Compatible with python2,3
