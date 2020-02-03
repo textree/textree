@@ -4,6 +4,8 @@
 
 　ツリー形式のテキストで指定した通りにノードを作成する。
 
+![social preview](doc/demo/social_preview.png)
+
 ![demo](doc/demo/demo.svg)
 
 # 特徴

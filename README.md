@@ -4,6 +4,8 @@
 
 Create nodes as specified in the tree text.
 
+![social preview](doc/demo/social_preview.png)
+
 ![demo](doc/demo/demo.svg)
 
 # Features
